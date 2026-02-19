@@ -2,6 +2,15 @@ SECTION A
 
 - ASSUMPTIONS(COLOUR REPRESENTATIVE , EXACT VS PARTIAL DEFINITONS, FEEDBACK FORMAT)
 
+black
+white
+red
+blue
+green
+brown
+
+
+Exact = user guesses correct colours in their correct sequence 
 
 
 
