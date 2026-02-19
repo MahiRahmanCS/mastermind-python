@@ -11,6 +11,10 @@ brown
 
 
 Exact = user guesses correct colours in their correct sequence 
+partial = user guesses correct colour in their incorrect sequence
+
+
+feedback
 
 
 
@@ -32,5 +36,5 @@ FR6- MAXIMUM OF 10 GUESSES
 FR7- MUST END GAME WHEN CORRECT SEQUENCE IS GUESSED OR MAXIMUM GUESSES HAVE BEEN USED
 FR8- PROGRAM MUST REJECT INVALID INPUS AND RETURN ERROR MESSAGES
 FR9- PROGRAM MUST GO THROUGHT PYTEST
-FR10-
+FR10- LOGIC CODE AND UI CODE SEPERATRE
 
