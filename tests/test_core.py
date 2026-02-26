@@ -1,4 +1,4 @@
-from src.core import score_guess
+from src.core import score_guess, validate_guess, random_code
 # When all 4 pegs are correct and in the correct position.
 def test_all_exact_matches():
     secret = ["R", "G", "B", "Y"]
@@ -49,3 +49,22 @@ def test_mixed_exact_and_partial():
     
     assert exact == 1
     assert partial == 3
+
+
+def test_validate_guess_valid():
+    assert validate_guess(["R", "G", "B", "Y"]) == True
+
+def test_validate_guess_invalid_length():
+    assert validate_guess(["R", "G", "B"]) == False
+
+def test_validate_guess_invalid_colour():
+    assert validate_guess(["R", "G", "B", "X"]) == False
+
+def test_generate_code_length():
+    code = random_code()
+    assert len(code) == 4
+
+def test_generate_code_allowed_colours():
+    code = random_code()
+    for slot in code:
+        assert slot in ["R","G","B","Y","W","K"]
