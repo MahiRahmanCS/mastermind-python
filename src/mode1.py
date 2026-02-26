@@ -1,31 +1,23 @@
 import random
-colours = ["red", "blue", "green", "yellow", "orange", "purple"]
+
+from .core import colours
+
+
+# simple helper functions using the shared colour list
 
 def generate_code():
-    code = []
-    for i in range(4):
-        code.append(random.choice(colours))
-    return code
+    """Return a random four‑colour code (list of strings)."""
+    return [random.choice(colours) for _ in range(4)]
 
-# create a function to check if the user input is any one of the random coulours in  the list code
+
 def check_input(user_input, code):
-    if user_input in code:
-        return True
-    else:
-        return False
-    
-# create a function to check if the user input is in the correct position in the list code
+    """Return True if ``user_input`` appears anywhere in ``code``."""
+    return user_input in code
+
+
 def check_position(user_input, code):
-    if user_input in code:
-        index = code.index(user_input)
-        if index == 0:
-            return "red"
-        elif index == 1:
-            return "blue"
-        elif index == 2:
-            return "green"
-        elif index == 3:
-            return "yellow"
-    else:
-        return False
-        
+    """If ``user_input`` is in ``code`` return its index, otherwise ``-1``."""
+    try:
+        return code.index(user_input)
+    except ValueError:
+        return -1
