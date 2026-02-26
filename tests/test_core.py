@@ -1,5 +1,5 @@
 from src.core import score_guess, validate_guess, random_code
-# When all 4 pegs are correct and in the correct position.
+# When all 4 slots are correct and in the correct position.
 def test_all_exact_matches():
     secret = ["R", "G", "B", "Y"]
     guess = ["R", "G", "B", "Y"]
