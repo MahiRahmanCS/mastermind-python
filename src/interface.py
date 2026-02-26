@@ -1,3 +1,4 @@
+
 import customtkinter
 
 # Set dark mode FIRST, before creating any widgets
