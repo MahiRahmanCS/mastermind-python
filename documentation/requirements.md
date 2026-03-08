@@ -63,6 +63,37 @@ The system shall declare a win if the player achieves 4 exact matches.
 FR7 — Game Termination
 The system shall terminate after a win or after 10 guesses, whichever occurs first.
 
+<<<<<<< HEAD
+3. Traceability 
+
+FR1 — Generate a valid secret code  
+Function: `random_code()`  
+Tests: `test_generate_code_length`, `test_generate_code_allowed_colours`
+
+FR2 — Validate guess length and allowed colours  
+Function: `validate_guess()`  
+Tests: `test_invalid_length`, `test_invalid_colour`
+
+FR3 — Calculate exact matches  
+Function: `score_guess()`  
+Tests: `test_exact_match`
+
+FR4 — Calculate partial matches without double counting duplicates  
+Function: `score_guess()`  
+Tests: `test_partial_match`, `test_duplicate_handling`
+
+FR5 — Limit the game to 10 guesses  
+Function: `game_over()`  
+Tests: `test_game_over`
+
+FR6 — Detect win condition when 4 exact matches occur  
+Function: `is_win()`  
+Tests: `test_is_win`
+
+FR7 — End the game after win or after 10 guesses  
+Functions: `is_win()`, `game_over()`  
+Tests: `test_win_condition`, `test_game_over`
+=======
 3. Non-Functional Requirements
 
 NFR1 - Reliability
@@ -82,3 +113,4 @@ System must be able to handle invalid inputs and display clear, meaningful error
 
 NFR6 - Seperation of concerns
 All functions must be seperated into seperate concerns, so that each can be tested, maintained and updated independently
+>>>>>>> main
