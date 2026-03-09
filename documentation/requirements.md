@@ -63,7 +63,7 @@ The system shall declare a win if the player achieves 4 exact matches.
 FR7 — Game Termination
 The system shall terminate after a win or after 10 guesses, whichever occurs first.
 
-<<<<<<< HEAD
+
 3. Traceability 
 
 FR1 — Generate a valid secret code  
@@ -93,24 +93,5 @@ Tests: `test_is_win`
 FR7 — End the game after win or after 10 guesses  
 Functions: `is_win()`, `game_over()`  
 Tests: `test_win_condition`, `test_game_over`
-=======
-3. Non-Functional Requirements
 
-NFR1 - Reliability
-System should be able to run without crashing and handle invalid inputs
 
-NFR2 - Usability
-Interface should be easy to understand and navigate, prompts should be easy to understand and useful
- 
-NFR3 - Performance
-system must be able to respond to user input within 500 millieseconds
-
-NFR4 - Scalability
-Code should allow for AI improvements or added modes and features without having to redesign major components
-
-NFR5 - Error handling
-System must be able to handle invalid inputs and display clear, meaningful error messages.
-
-NFR6 - Seperation of concerns
-All functions must be seperated into seperate concerns, so that each can be tested, maintained and updated independently
->>>>>>> main
