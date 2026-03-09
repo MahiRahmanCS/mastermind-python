@@ -1,0 +1,18 @@
+# Learning Log
+
+During this project we learned several important software engineering practices.
+
+Testing
+We learned how to use pytest to create automated unit tests. Testing helped us identify logic issues, particularly with handling the scoring algorithm.
+
+Version Control
+Using Git allowed us to collaborate effectively. Branching ensured that each developer could work independently without breaking the main codebase.
+
+Prompt Engineering
+AI tools were used to assist with development. However, prompts needed to be carefully refined to produce useful outputs.
+
+Algorithm Design
+The scoring algorithm required careful handling of duplicates. for example implementing a two-pass system ensured that exact matches were processed before partial matches.
+
+Reflection
+This project demonstrated the importance of testing, clear requirements, and structured development when building reliable software.
