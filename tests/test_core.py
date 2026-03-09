@@ -1,3 +1,9 @@
+"""
+Unit tests for Mastermind core logic.
+Tests scoring, validation, and code generation.
+"""
+
+
 from src.core import score_guess, validate_guess, random_code
 # When all 4 slots are correct and in the correct position.
 def test_all_exact_matches():
