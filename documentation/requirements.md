@@ -43,9 +43,10 @@ The system shall generate a secret code consisting of 4 slots selected from the 
 FR2 — Guess Validation
 The system shall validate that each guess:
 
-Contains exactly 4 characters.
+Contains exactly 4 characters
 
-Uses only allowed colours.
+Uses only allowed colours
+
 Invalid guesses shall be rejected.
 
 FR3 — Exact Match Calculation
@@ -63,35 +64,52 @@ The system shall declare a win if the player achieves 4 exact matches.
 FR7 — Game Termination
 The system shall terminate after a win or after 10 guesses, whichever occurs first.
 
+3. Traceability
 
-3. Traceability 
+FR1 — Generate a valid secret code
+Function: random_code()
+Tests: test_generate_code_length, test_generate_code_allowed_colours
 
-FR1 — Generate a valid secret code  
-Function: `random_code()`  
-Tests: `test_generate_code_length`, `test_generate_code_allowed_colours`
+FR2 — Validate guess length and allowed colours
+Function: validate_guess()
+Tests: test_invalid_length, test_invalid_colour
 
-FR2 — Validate guess length and allowed colours  
-Function: `validate_guess()`  
-Tests: `test_invalid_length`, `test_invalid_colour`
+FR3 — Calculate exact matches
+Function: score_guess()
+Tests: test_exact_match
 
-FR3 — Calculate exact matches  
-Function: `score_guess()`  
-Tests: `test_exact_match`
+FR4 — Calculate partial matches without double counting duplicates
+Function: score_guess()
+Tests: test_partial_match, test_duplicate_handling
 
-FR4 — Calculate partial matches without double counting duplicates  
-Function: `score_guess()`  
-Tests: `test_partial_match`, `test_duplicate_handling`
+FR5 — Limit the game to 10 guesses
+Function: game_over()
+Tests: test_game_over
 
-FR5 — Limit the game to 10 guesses  
-Function: `game_over()`  
-Tests: `test_game_over`
+FR6 — Detect win condition when 4 exact matches occur
+Function: is_win()
+Tests: test_is_win
 
-FR6 — Detect win condition when 4 exact matches occur  
-Function: `is_win()`  
-Tests: `test_is_win`
+FR7 — End the game after win or after 10 guesses
+Functions: is_win(), game_over()
+Tests: test_win_condition, test_game_over
 
-FR7 — End the game after win or after 10 guesses  
-Functions: `is_win()`, `game_over()`  
-Tests: `test_win_condition`, `test_game_over`
+4. Non-Functional Requirements
 
+NFR1 — Reliability
+The system should run without crashing and handle invalid inputs reliably.
 
+NFR2 — Usability
+The interface should be easy to understand and navigate, with clear and useful prompts.
+
+NFR3 — Performance
+The system must respond to user input within 500 milliseconds.
+
+NFR4 — Scalability
+The code should allow for future improvements, such as AI players or additional game modes, without redesigning major components.
+
+NFR5 — Error Handling
+The system must handle invalid inputs and display clear, meaningful error messages.
+
+NFR6 — Separation of Concerns
+Functions must be separated into distinct responsibilities so they can be tested, maintained, and updated independently.
