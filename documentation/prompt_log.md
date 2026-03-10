@@ -1,51 +1,49 @@
-For Each Entry Include
-Name: Mahi Rahman
-Task –  create an interface layer for the Mastermind game, separating user interaction (prompts, formatting, display) from logic modules like core.py and mode2.py.
-Prompt – 
-    Write a Python module called interfaces.py for a Mastermind game.
-    It must contain functions that handle all user‑interface responsibilities such as:
-
-    formatted printing
-    showing guesses and feedback
-    asking for mode selection
-    asking for user guesses
-    asking for feedback in mode 2
-
-    No game logic should be inside this module.
-
-AI Output (Summary) –
-     def display_welcome():
-         print("Welcome to Mastermind!")
-    def prompt_mode():
-        return input("Select mode (1: You guess, 2: Computer guesses): ")
-    def prompt_guess():
-        return input("Enter your guess: ")
-    def show_feedback(exact, partial):
-        print(f"Correct Position: {exact}, Correct Colour: {partial}")
-
-Evaluation – 
-        Correct - UI‑only functions, separation from logic, Clear naming
-        incorrect/incomplete -No validation inside interface prompts, No structured return types, Missing error‑display messages
-
-Refinement – I refined the next prompt to improve consistency and future‑proofing
-
-Testing – missing error display messages may cause confusion to users on whats wrong
-
-Learning – AI needs explicit instructions for data validation
+Name: Mahi
+Task: Designing a mode‑selection interface for switching between player‑guess and computer‑guess modes.
+Prompt:
+"How do I implement a clean console interface that allows players to select between Mode 1 (player guesses) and Mode 2 (computer guesses)?"
+AI Output Summary:
+The AI suggested using a loop that repeatedly asks for user input until a valid option is given. It recommended validating with try/except for numeric input and mapping the selected number to game modes.
+Evaluation:
+The proposed structure was simple and readable. However, the AI initially didn’t enforce re-prompting after invalid input.
+Refinement:
+Added explicit error messages and a loop that continues until a valid input (1 or 2) is entered.
+Testing:
+Verified behaviour with inputs such as "abc", "5", "", and "1".
+Learning:
+AI provides strong structural suggestions, but usability improvements (e.g., clearer error handling) benefit from manual adjustment.
 
 
-Sequence Diagrams
-I will provide a brief overview in Thursday’s lecture (along with automated testing).
+Name: Mahi
+Task: Building a restart system that resets all game state variables.
+Prompt:
+"What is a good way to reset all Mastermind game variables when the player chooses to restart?"
+AI Output Summary:
+The AI recommended creating a restart() function to reinitialize variables such as game_code, current_attempt, current_guess, and possible_codes. It also suggested regenerating the correct code depending on game mode.
+Evaluation:
+The logic was appropriate, but the AI initially placed code generation outside the function, which didn’t allow mode‑sensitive resets.
+Refinement:
+Integrated a mode check (current_mode == 1 vs 2) inside the restart function.
+Testing:
+Manually verified restarts after Mode 1 and Mode 2 games, ensuring separate code generators were used.
+Learning:
+AI-provided structure is helpful, but details about multi‑mode interactions require clarification.
 
 
-
-
-
-
-
-
-
-
+Name: Mahi
+Task: Creating input validation for user guesses in Mode 1.
+Prompt:
+"How can I validate a user's guess in a Mastermind console game to ensure it contains exactly four valid colours?"
+AI Output Summary:
+The AI recommended checking length, verifying each token against a list of valid colours, and looping until the user enters a correct format. It also suggested integrating existing core.validate_guess() logic.
+Evaluation:
+The flow was correct, although confirmation messages needed improvement for clarity.
+Refinement:
+Added more user‑friendly feedback messages and improved spacing and formatting in the console output.
+Testing:
+Tried cases like "R G B", "R K X Y", "R G B Y R", and random incorrect formatting.
+Learning:
+AI can structure logic well, but human iteration helps make the user experience smoother and more intuitive.
 
 
 
