@@ -1,5 +1,7 @@
-from src.core2 import random_code, validate_guess, score_guess, is_win, game_over
-from mode2 import get_feedback, generate_guess, narrow_down_codes
+from sympy import product
+
+from core2 import random_code, generate_guess, narrow_down_codes, is_win, game_over
+
 
 def main():
     print("Welcome to Mastermind! The program will try to guess your code.")
@@ -8,25 +10,35 @@ def main():
     print("Example: 2-1 means 2 pegs in correct position, 1 correct color in wrong position\n")
     
     colours = ['R', 'G', 'B', 'Y', 'W', 'K']
+    # Generate ALL possible codes (6^4 = 1296 combinations)
     possible_codes = [list(code) for code in product(colours, repeat=4)]
     attempts = 10
-    
+
     for attempt in range(attempts):
         guess = generate_guess(possible_codes)
         print(f"Attempt {attempt + 1}: Program guesses {guess}")
         
         try:
-            feedback_input = input("Enter feedback (correct position - correct colour): ")
-            correct_position, correct_colour = map(int, feedback_input.split('-'))
-            feedback = (correct_position, correct_colour)
+            feedback = input("Enter feedback (correct position - correct colour): ")
+            correct_position, correct_colour = map(int, feedback.split('-'))
             
-            if is_win(feedback):
+            if is_win((correct_position, correct_colour)):
                 print("The program guessed the code correctly!")
                 return
             
-            possible_codes = narrow_down_codes(possible_codes, guess, feedback)
+            # Narrow down possible codes based on feedback
+            possible_codes = narrow_down_codes(possible_codes, guess, (correct_position, correct_colour))
+            
+            if not possible_codes:
+                print("Invalid feedback. No possible codes match the feedback provided.")
+                print("Please make sure your feedback is accurate based on your secret code.")
+                return
         except ValueError:
-            print("Invalid feedback format. Please enter as 'correct_position-correct_colour'.")
-            continue
+            print("Invalid input format. Please use format: 0-0 (e.g., 2-1)")
+            return
     
-    print("Game over! The program couldn't guess the code within the attempts.")
+    print("The program failed to guess the code within the allowed attempts.")
+
+if __name__ == "__main__":
+    main()
+        
