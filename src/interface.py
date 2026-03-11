@@ -2,11 +2,11 @@
 from __future__ import annotations
 
 # Menu/dispatcher for the two CLI entry points.
-# Uses relative imports so it runs cleanly with: `python -m src.interface`
+# Run it with:  python -m src.interface   (or simply: python -m src)
 
 from .core import ALLOWED_COLOURS
-from .cli import main as mode1_main     # Mode 1 — You guess
-from .cli2 import main as mode2_main    # Mode 2 — Computer guesses
+from .cli import main as mode1_main      # Mode 1 — You guess
+from .cli2 import main as mode2_main     # Mode 2 — Computer guesses
 
 
 def _ask_mode() -> int:
@@ -36,10 +36,8 @@ def main() -> None:
         mode = _ask_mode()
 
         if mode == 1:
-            # Mode 1: player guesses the secret code
             mode1_main()
         else:
-            # Mode 2: computer guesses; you provide feedback (e.g., "2-1")
             mode2_main()
 
         if not _ask_play_again():
@@ -48,4 +46,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # You can still run: python -m src.interface
+    # This guard is harmless and keeps symmetry if someone runs this file directly.
     main()
