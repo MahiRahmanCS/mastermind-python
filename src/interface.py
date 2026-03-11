@@ -4,9 +4,10 @@ from __future__ import annotations
 # Menu/dispatcher for the two CLI entry points.
 # Run it with:  python -m src.interface   (or simply: python -m src)
 
-from .core import ALLOWED_COLOURS
-from .cli import main as mode1_main      # Mode 1 — You guess
-from .cli2 import main as mode2_main     # Mode 2 — Computer guesses
+from . import core2, core, cli, cli2      # now the relative imports in
+                                       # mode1/mode2 succeed
+
+colours = cli2.colours   # or core.colours; only used for display
 
 
 def _ask_mode() -> int:
