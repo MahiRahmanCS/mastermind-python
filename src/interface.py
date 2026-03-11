@@ -11,10 +11,10 @@ if __name__ == "__main__" and __package__ is None:
     __package__ = "src"               # behave as if we were imported
                                      # as `python -m src.interface`
 
-from . import core2, core       # now the relative imports in
+from . import core2, core, cli, cli2      # now the relative imports in
                                        # mode1/mode2 succeed
 
-colours = core.colours   # or core.colours; only used for display
+colours = cli2.colours   # or core.colours; only used for display
 
 
 def _ask_mode() -> int:

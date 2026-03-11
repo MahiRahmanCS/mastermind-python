@@ -1,6 +1,7 @@
 from itertools import product
 from core2 import random_code, generate_guess, narrow_down_codes, is_win, game_over
 
+colours = ['R', 'G', 'B', 'Y', 'W', 'K']
 
 def main():
     print("Welcome to Mastermind! The program will try to guess your code.")
@@ -8,7 +9,6 @@ def main():
     print("After each guess, provide feedback as 'correct_position-correct_colour'")
     print("Example: 2-1 means 2 pegs in correct position, 1 correct color in wrong position\n")
 
-    colours = ['R', 'G', 'B', 'Y', 'W', 'K']
     possible_codes = [list(code) for code in product(colours, repeat=4)]
     attempts = 10
 
