@@ -172,3 +172,104 @@ This ensured the algorithm correctly handled duplicate colours and did not overc
 Learning
 
 This interaction demonstrated that AI can help explain algorithm complexity and efficiency. However, it is important to critically evaluate the explanations and consider how different implementation choices affect performance. Testing the algorithm with edge cases also helped confirm that the scoring logic works correctly.
+
+
+
+
+
+Name: Emmauel
+
+Task:
+Verify that the narrow_down_codes function correctly filters the list of possible codes based on feedback from a guess.
+
+Prompt:
+"How can I test whether narrow_down_codes(possible_codes, guess, feedback) correctly removes codes that do not match the provided Mastermind feedback?"
+
+AI Output Summary:
+The AI suggested creating a unit test where a guess is compared with multiple possible codes and only the code that produces the same feedback remains in the filtered list.
+
+Evaluation:
+The test effectively checks whether the filtering logic works correctly. By using feedback (0,4), it ensures that only codes containing the same colours as the guess but in different positions are retained.
+
+Refinement:
+The test could be expanded by adding additional cases, such as feedback with exact matches (4,0) or mixed feedback (2,1), to ensure the function behaves correctly across different scenarios.
+
+Testing:
+Example values used:
+
+possible_codes = [["R","G","B","Y"], ["G","B","Y","R"], ["R","R","R","R"]]
+guess = ["R","G","B","Y"]
+feedback = (0,4)
+
+The expected result is:
+
+[["G","B","Y","R"]]
+
+Learning:
+This test demonstrates how filtering functions can be validated by using inputs and checking the expected output. Testing with different feedback combinations helps ensure the solver correctly narrows the search space.
+
+
+
+
+Name: Emmanuel
+
+Task:
+Check the correctness of the get_feedback function used to calculate Mastermind scoring results.
+
+Prompt:
+"How does the get_feedback(guess, secret) function calculate the number of correct positions and correct colours in a Mastermind game, does it also check for duplicates"
+
+AI Output Summary:
+The AI explained that the function first counts exact matches by comparing each element of the guess and secret lists using zip. It then calculates colour matches by counting the minimum occurrences of each colour in both lists and subtracting the exact matches to determine partial matches.
+
+Evaluation:
+The explanation correctly described how the algorithm works. The use of min(guess.count(c), secret.count(c)) ensures that duplicate colours are not overcounted. However, the approach requires multiple count() operations, which can increase computational cost as the number of colours grows.
+
+Refinement:
+The prompt was refined to consider whether using a two-pass algorithm with marked elements or using a dictionary-based counting approach could improve clarity and efficiency while still preventing duplicate colour overcounting.
+
+Testing:
+The function was tested with several scenarios, including duplicate-heavy cases such as:
+
+secret = ["R","R","G","B"]
+guess = ["R","R","R","R"]
+
+This verified that the function correctly returns (2,0) without incorrectly counting extra partial matches.
+
+Learning:
+This interaction showed that AI can effectively explain algorithm logic and help identify potential efficiency concerns.
+
+
+
+
+Name: Emmanuel
+
+Task:
+Verify that the generate_guess function returns a valid guess from the list of possible codes.
+
+Prompt:
+"How can I test that the generate_guess(possible_codes) function correctly returns a valid Mastermind guess with four colours taken from the allowed colour set?"
+
+AI Output Summary:
+The AI suggested creating a unit test that checks the structure of the returned guess. The test verifies that the guess contains exactly four elements and that each element is a valid colour from the allowed set.
+
+Evaluation:
+The test successfully confirms that the function returns a correctly formatted guess. However, it does not guarantee that the guess actually comes from the possible_codes list, which is the intended behavior of the function.
+
+Refinement:
+The test could be improved by asserting that the returned guess is one of the codes in possible_codes, ensuring the function does not generate a value outside the candidate list.
+
+Testing:
+Example test case used:
+
+possible_codes = [["R","G","B","Y"], ["G","B","Y","R"]]
+
+The test confirms:
+
+The guess length is 4
+
+Each colour in the guess is valid
+
+Learning
+This interaction showed that unit tests should verify the intended logic of the function. Ensuring the returned guess is part of the possible_codes list would make the test more complete.
+
