@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 # Menu/dispatcher for the two CLI entry points.
-# Uses relative imports so it runs cleanly with: `python -m src.interface`
+# Run it with:  python -m src.interface   (or simply: python -m src)
 
 from . import core2, core, cli, cli2      # now the relative imports in
                                        # mode1/mode2 succeed
@@ -37,10 +37,8 @@ def main() -> None:
         mode = _ask_mode()
 
         if mode == 1:
-            # Mode 1: player guesses the secret code
             mode1_main()
         else:
-            # Mode 2: computer guesses; you provide feedback (e.g., "2-1")
             mode2_main()
 
         if not _ask_play_again():
@@ -49,4 +47,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # You can still run: python -m src.interface
+    # This guard is harmless and keeps symmetry if someone runs this file directly.
     main()
