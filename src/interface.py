@@ -1,13 +1,13 @@
-# src/interface.py
-from __future__ import annotations
+"""
+Interface (menu dispatcher) for the Mastermind game.
 
-# Menu/dispatcher for the two CLI entry points.
-# Run it with:  python -m src.interface   (or simply: python -m src)
+This version is for the "normal" (non-package) setup.
+Run it directly:  python src/interface.py
+"""
 
-from . import core2, core, cli, cli2      # now the relative imports in
-                                       # mode1/mode2 succeed
-
-colours = cli2.colours   # or core.colours; only used for display
+from core import ALLOWED_COLOURS
+from cli import main as mode1_main      # Mode 1 — You guess
+from cli2 import main as mode2_main     # Mode 2 — Computer guesses
 
 
 def _ask_mode() -> int:
@@ -31,14 +31,20 @@ def _ask_play_again() -> bool:
 
 def main() -> None:
     print("Welcome to Mastermind!")
-    print(f"Allowed colours: {', '.join(ALLOWED_COLOURS)}\n")
+    try:
+        print(f"Allowed colours: {', '.join(ALLOWED_COLOURS)}\n")
+    except Exception:
+        # If ALLOWED_COLOURS ever changes or is missing, don't crash the menu.
+        pass
 
     while True:
         mode = _ask_mode()
 
         if mode == 1:
+            # Mode 1: player guesses the secret code
             mode1_main()
         else:
+            # Mode 2: computer guesses; user provides feedback (e.g., "2-1")
             mode2_main()
 
         if not _ask_play_again():
@@ -47,6 +53,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    # You can still run: python -m src.interface
-    # This guard is harmless and keeps symmetry if someone runs this file directly.
     main()
