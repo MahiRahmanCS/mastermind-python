@@ -3,8 +3,8 @@ Command line interface for the Mastermind game.
 Handles user input, displays feedback, and controls the game loop.
 """
 
-from src.core import random_code, validate_guess, score_guess, is_win, game_over
-MAX_GUESSES = 10
+from .core import random_code, validate_guess, score_guess, is_win, game_over
+
 def main():
     print("Welcome to Mastermind!")
     secret = random_code()

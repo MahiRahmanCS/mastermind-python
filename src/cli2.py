@@ -1,5 +1,6 @@
-from itertools import product
-from core2 import random_code, generate_guess, narrow_down_codes, is_win, game_over
+
+from .core2 import generate_guess, narrow_down_codes, is_win, game_over
+from .core import ALLOWED_COLOURS
 
 colours = ['R', 'G', 'B', 'Y', 'W', 'K']
 
