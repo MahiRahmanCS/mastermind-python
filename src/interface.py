@@ -11,10 +11,10 @@ if __name__ == "__main__" and __package__ is None:
     __package__ = "src"               # behave as if we were imported
                                      # as `python -m src.interface`
 
-from . import mode1, mode2, core       # now the relative imports in
+from . import core2, core       # now the relative imports in
                                        # mode1/mode2 succeed
 
-colours = mode1.colours   # or core.colours; only used for display
+colours = core.colours   # or core.colours; only used for display
 
 
 def _ask_mode() -> int:
@@ -48,12 +48,12 @@ def main() -> None:
     print(f"Available colours: {', '.join(colours)}")
 
     while True:
-        mode = _ask_mode()
+        core = _ask_mode()
 
-        if mode == 1:
+        if core == 1:
             # mode‑1 logic lives here because mode1.py has no entry point;
             # the only function we call from mode1 is generate_code().
-            code = mode1.generate_code()
+            code = core.generate_code()
             attempts = 0
             while True:
                 attempts += 1
@@ -88,9 +88,9 @@ def main() -> None:
                     print(f"❌ Game Over! The code was: {code}")
                     break
 
-        else:  # mode == 2
+        else:  # core == 2
             # delegate completely; mode2.main() contains the whole loop.
-            mode2.main()
+            core2.main()
 
         if not _ask_play_again():
             print("Thanks for playing!")
