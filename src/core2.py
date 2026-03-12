@@ -1,3 +1,4 @@
+
 import random
 from itertools import product as itertools_product
 
@@ -18,7 +19,12 @@ def narrow_down_codes(possible_codes, guess, feedback):
     return [code for code in possible_codes if get_feedback(guess, code) == feedback]
 
 def is_win(feedback):
-    return feedback[0] == 4
+    # Validate input
+    if not isinstance(feedback, tuple) or len(feedback) != 2:
+        raise ValueError("Feedback must be a tuple with two values")
+
+    exact, partial = feedback
+    return exact == 4
 
 def game_over(attempts, max_attempts):
     return attempts >= max_attempts
